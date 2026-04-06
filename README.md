@@ -1,1 +1,1 @@
-full-stack-my-blog-app
+full-stack-my-blog-apps
