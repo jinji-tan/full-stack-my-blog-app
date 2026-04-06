@@ -1,3 +1,4 @@
+using System.Collections;
 using api.Data;
 using api.DTOs;
 using api.Models;
@@ -6,6 +7,7 @@ namespace api.Helpers.interfaces
 {
     public interface IAuthHelper
     {
+        Task<IEnumerable<User>> GetUsers();
         Task<bool> Register(RegisterDto registerDto);
         Task<bool> UserExists(string email);
         Task<User?> GetUserById(int id);

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Security.Cryptography;
 using System.Text;
 using api.Data;
@@ -55,7 +56,7 @@ namespace api.Helpers
         {
             string sql = @"SELECT * FROM Blog.Users WHERE Email = @Email";
 
-            return await _context.LoadDataSingle<User?>(sql, new { Email = email });
+            return await _context.LoadDataSingle<User>(sql, new { Email = email });
         }
 
         public async Task<bool> VerifyPassword(string password, byte[] storedHash, byte[] storedSalt)
@@ -134,5 +135,13 @@ namespace api.Helpers
             return await _context.ExecuteSql(sql, new { Id = id });
         }
 
+        public async Task<IEnumerable<User>> GetUsers()
+        {
+            string sql = @"SELECT * FROM Blog.Users";
+
+            var users =  await _context.LoadData<User>(sql);
+
+            return users.ToList();
+        }
     }
 }
