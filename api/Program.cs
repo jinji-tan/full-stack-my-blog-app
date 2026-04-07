@@ -2,8 +2,8 @@ using System.Text;
 using api.Data;
 using api.Helpers;
 using api.Helpers.interfaces;
-using api.Repositories;
-using api.Repositories.interfaces;
+using api.Services;
+using api.Services.interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -53,7 +53,7 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-builder.Services.AddSingleton<MyBlogAppContext>();
+builder.Services.AddScoped<MyBlogAppContext>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IAuthHelper, AuthHelper>();
 
