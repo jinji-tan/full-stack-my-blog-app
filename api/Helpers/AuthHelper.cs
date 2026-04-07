@@ -59,7 +59,7 @@ namespace api.Helpers
             return await _context.LoadDataSingle<User>(sql, new { Email = email });
         }
 
-        public async Task<bool> VerifyPassword(string password, byte[] storedHash, byte[] storedSalt)
+        public bool VerifyPassword(string password, byte[] storedHash, byte[] storedSalt)
         {
             using var hmac = new HMACSHA512(storedSalt);
             byte[] computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
@@ -71,7 +71,7 @@ namespace api.Helpers
         {
             var user = await GetUserByEmail(loginDto.Email);
 
-            if (user != null && await VerifyPassword(loginDto.Password, user.PasswordHash, user.PasswordSalt))
+            if (user != null && VerifyPassword(loginDto.Password, user.PasswordHash, user.PasswordSalt))
                 return user;
 
             return null;
@@ -139,7 +139,7 @@ namespace api.Helpers
         {
             string sql = @"SELECT * FROM Blog.Users";
 
-            var users =  await _context.LoadData<User>(sql);
+            var users = await _context.LoadData<User>(sql);
 
             return users.ToList();
         }

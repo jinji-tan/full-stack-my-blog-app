@@ -12,7 +12,7 @@ namespace api.Helpers.interfaces
         Task<bool> UserExists(string email);
         Task<User?> GetUserById(int id);
         Task<User?> GetUserByEmail(string email);
-        Task<bool> VerifyPassword(string password, byte[] storedHash, byte[] storedSalt);
+        public bool VerifyPassword(string password, byte[] storedHash, byte[] storedSalt);
         Task<User?> Login(LoginDto loginDto);
         Task<bool> UpdateProfile(int id, UpdateUserDto updateUserDto);
         Task<bool> UpdatePassword(int id, UpdatePasswordDto updatePasswordDto);
