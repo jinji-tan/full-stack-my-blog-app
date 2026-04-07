@@ -1,6 +1,6 @@
 using api.DTOs;
 using api.Helpers.interfaces;
-using api.Repositories.interfaces;
+using api.Services.interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +18,7 @@ namespace api.Controllers
             _auth = auth;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
@@ -53,9 +54,9 @@ namespace api.Controllers
 
             return Ok(new
             {
-                // Id = user.Id,
+                Id = user.Id,
                 message = "User registered successfully",
-                // token = _token.CreateToken(user.Id, user.Email)
+                token = _token.CreateToken(user.Id, user.Email)
             });
         }
 
