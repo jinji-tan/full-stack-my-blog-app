@@ -13,7 +13,7 @@ namespace api.Services
         public TokenService(IConfiguration config)
         {
             var tokenKey = config["Jwt:TokenKey"]
-                ?? throw new Exception("Jwt:TokenKey not found in appsettings.json");
+                ?? throw new Exception("Jwt:TokenKey not found");
 
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey));
         }
