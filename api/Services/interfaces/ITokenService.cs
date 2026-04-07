@@ -1,4 +1,4 @@
-namespace api.Repositories.interfaces
+namespace api.Services.interfaces
 {
     public interface ITokenService
     {

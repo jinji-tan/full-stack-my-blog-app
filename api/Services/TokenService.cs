@@ -1,10 +1,10 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using api.Repositories.interfaces;
+using api.Services.interfaces;
 using Microsoft.IdentityModel.Tokens;
 
-namespace api.Repositories
+namespace api.Services
 {
     public class TokenService : ITokenService
     {
@@ -25,7 +25,7 @@ namespace api.Repositories
                 new Claim(ClaimTypes.NameIdentifier, id.ToString()),
                 new Claim(ClaimTypes.Email, email)
             };
-            
+
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
 
             var tokenDescriptor = new SecurityTokenDescriptor
