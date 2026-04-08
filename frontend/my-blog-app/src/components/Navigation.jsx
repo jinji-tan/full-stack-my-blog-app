@@ -8,10 +8,10 @@ const Navigation = ({ setPage }) => {
     }
 
     return (
-        <div className="min-h-[100px] relative flex flex-row items-center p-6 bg-gradient-to-br from-slate-50 to-gray-100 rounded-xl shadow-xl">
+        <div className="min-h-25 relative flex flex-row items-center p-6 bg-linear-to-br from-slate-50 to-gray-100 rounded-xl shadow-xl">
 
             {/* TITLE */}
-            <div className="text-3xl font-black tracking-tight bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <div className="text-3xl font-black tracking-tight bg-linear-to-br from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                 Welcome
             </div>
 
