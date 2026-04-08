@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { loginApi } from "../services/api"
+import LoadingButton from "../components/LoadingButton"
 
 const Login = ({ setPage }) => {
     const [email, setEmail] = useState("")
@@ -16,14 +17,24 @@ const Login = ({ setPage }) => {
             return
         }
 
-        setLoading(true)
-        
+        const start = Date.now();
+
         try {
+            setLoading(true)
+
             const data = await loginApi(email, password)
+
+            const elapsed = Date.now() - start;
+            if (elapsed < 500) {
+                await new Promise(res => setTimeout(res, 500 - elapsed));
+            }
+
             localStorage.setItem("token", data.token)
             setPage("home")
+
         } catch (err) {
             setError(err.message || "Invalid email or password")
+
         } finally {
             setLoading(false)
         }
@@ -44,10 +55,8 @@ const Login = ({ setPage }) => {
                     Login
                 </p>
 
-                {/* Error */}
                 {error && <p className="text-red-500 text-center">{error}</p>}
 
-                {/* Email */}
                 <label className="relative">
                     <input
                         required
@@ -65,7 +74,6 @@ const Login = ({ setPage }) => {
                     </span>
                 </label>
 
-                {/* Password */}
                 <label className="relative">
                     <input
                         required
@@ -83,16 +91,11 @@ const Login = ({ setPage }) => {
                     </span>
                 </label>
 
-                {/* Submit Button */}
-                <button
-                    type="submit"
-                    disabled={loading}
-                    className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-base transition disabled:opacity-50"
-                >
-                    {loading ? "Logging in..." : "Submit"}
-                </button>
+                {/* Loading... */}
+                <LoadingButton loading={loading} type="submit">
+                    Submit
+                </LoadingButton>
 
-                {/* Register Link */}
                 <p className="text-sm text-gray-500 text-center">
                     Don't have an account yet?{" "}
                     <button

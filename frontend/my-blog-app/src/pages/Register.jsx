@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { registerApi } from "../services/api"
+import LoadingButton from "../components/LoadingButton"
 
 
 const Register = ({ setPage }) => {
@@ -19,12 +20,12 @@ const Register = ({ setPage }) => {
         e.preventDefault()
         setError("")
 
-        if (!email || !password || !confirmPassword || !firstName || !lastName) {
-            setError("Please fill in all fields")
-            return
+        if (!email.trim() || !password.trim() || !confirmPassword.trim() || !firstName.trim() || !lastName.trim()) {
+            setError("Please fill in all fields");
+            return;
         }
 
-        if (password != confirmPassword) {
+        if (password !== confirmPassword) {
             setError("Passwords do not match")
             return
         }
@@ -39,15 +40,25 @@ const Register = ({ setPage }) => {
             return
         }
 
-        setLoading(true)
+        const start = Date.now();
 
         try {
-            const data = await registerApi(email, password, firstName, lastName)
+            setLoading(true)
+
+            const data = await registerApi(email, password, firstName, lastName);
+
+            const elapsed = Date.now() - start;
+            if (elapsed < 500) {
+                await new Promise(res => setTimeout(res, 500 - elapsed));
+            }
+
             localStorage.setItem("token", data.token)
             alert(data.message)
             setPage("home")
+
         } catch (error) {
-            alert(error.message) || "Something went wrong"
+            setError(error?.message || error?.response?.data?.message || "Something went wrong")
+            
         } finally {
             setLoading(false)
         }
@@ -155,12 +166,10 @@ const Register = ({ setPage }) => {
                     </span>
                 </label>
 
-                {/* Button */}
-                <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-base transition"
-                    disabled={loading}
-                >
-                    {loading ? "Logging in..." : "Submit"}
-                </button>
+                {/* Loading... */}
+                <LoadingButton loading={loading} type="submit">
+                    Submit
+                </LoadingButton>
 
                 {/* Sign in */}
                 <p className="text-sm text-gray-500 text-center">
