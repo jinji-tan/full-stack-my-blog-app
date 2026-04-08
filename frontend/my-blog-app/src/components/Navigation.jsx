@@ -52,5 +52,6 @@ const Navigation = ({ setPage }) => {
         </div>
     );
 };
+ 
 
 export default Navigation;
