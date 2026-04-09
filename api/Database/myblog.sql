@@ -7,7 +7,7 @@ GO
 CREATE SCHEMA Blog
 GO
 
--- 1. Users Table
+-- Users Table
 CREATE TABLE Blog.Users
 (
     Id INT PRIMARY KEY IDENTITY(1,1),
@@ -29,7 +29,7 @@ SELECT Id
 FROM Blog.Users
 WHERE Email = ''
 
--- 2. Posts Table
+-- Posts Table
 CREATE TABLE Blog.Posts
 (
     Id INT PRIMARY KEY IDENTITY(1,1),
@@ -41,7 +41,7 @@ CREATE TABLE Blog.Posts
     CONSTRAINT FK_Posts_Users FOREIGN KEY (UserId) REFERENCES Blog.Users(Id) ON DELETE CASCADE
 );
 
--- 3. Comments Table
+-- Comments Table
 CREATE TABLE Blog.Comments
 (
     Id INT PRIMARY KEY IDENTITY(1,1),
@@ -51,6 +51,13 @@ CREATE TABLE Blog.Comments
     CreatedAt DATETIME2 DEFAULT SYSUTCDATETIME(),
     CONSTRAINT FK_Comments_Posts FOREIGN KEY (PostId) REFERENCES Blog.Posts(Id) ON DELETE CASCADE,
     CONSTRAINT FK_Comments_Users FOREIGN KEY (UserId) REFERENCES Blog.Users(Id)
-    -- Removed ON DELETE CASCADE on Users to prevent accidental mass-deletion of comments
 );
 GO
+
+-- Addition on Comments Table
+ALTER TABLE Blog.Comments 
+ADD ParentId INT NULL;
+
+ALTER TABLE Blog.Comments 
+ADD CONSTRAINT FK_Comments_Comments 
+FOREIGN KEY (ParentId) REFERENCES Blog.Comments(Id);
