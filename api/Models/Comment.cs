@@ -3,24 +3,25 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace api.Models
 {
-    public class Post
+    public class Comment
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
+        public int PostId { get; set; }
+
+        [Required]
         public int UserId { get; set; }
 
         [Required]
-        [MaxLength(255)]
-        public string Title { get; set; } = "";
+        public string Content { get; set; } = string.Empty;
 
-        [Required]
-        public string Content { get; set; } = "";
+        public int? ParentId { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+        public virtual Post Post { get; set; } = null!;
 
         public virtual User User { get; set; } = null!;
     }
