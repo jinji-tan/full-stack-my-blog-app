@@ -101,6 +101,5 @@ npm run dev
 
 ## 👤 Author
 **Louis Tan**
-*Full-Stack Developer*
 
 ---
