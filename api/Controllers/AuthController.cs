@@ -56,6 +56,8 @@ namespace api.Controllers
             {
                 Id = user.Id,
                 message = "User registered successfully",
+                firstName = user.FirstName,
+                lastName = user.LastName,
                 token = _token.CreateToken(user.Id, user.Email)
             });
         }
@@ -71,6 +73,8 @@ namespace api.Controllers
             {
                 Id = user.Id,
                 message = "User logged in successfully",
+                firstName = user.FirstName,
+                lastName = user.LastName,
                 token = _token.CreateToken(user.Id, user.Email)
             });
         }
