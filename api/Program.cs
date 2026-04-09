@@ -2,6 +2,8 @@ using System.Text;
 using api.Data;
 using api.Helpers;
 using api.Helpers.interfaces;
+using api.Repositories;
+using api.Repositories.interfaces;
 using api.Services;
 using api.Services.interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -12,7 +14,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+    });
 
 builder.Services.AddCors(options =>
 {
@@ -54,6 +60,8 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddScoped<MyBlogAppContext>();
+builder.Services.AddScoped<IPostRepository, PostRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IAuthHelper, AuthHelper>();
 
