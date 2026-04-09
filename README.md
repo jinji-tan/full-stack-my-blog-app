@@ -21,8 +21,7 @@ A modern, high-performance blog platform built with **.NET 10**, **React 19**, a
 
 ## 🎬 Visual Demos
 
-### 🛡️ User Onboarding & Auth
-Experience a seamless entry into the platform.
+### 🛡️ User & Auth
 
 | Registration | Login |
 | :---: | :---: |
@@ -36,8 +35,7 @@ Experience a seamless entry into the platform.
 
 ---
 
-### ✍️ Content Creation
-Manaing your blog posts has never been easier.
+### ✍️ Post
 
 | Creating a Post | Editing & Deleting |
 | :---: | :---: |
@@ -46,8 +44,7 @@ Manaing your blog posts has never been easier.
 
 ---
 
-### 🗣️ Community Engagement
-Interactive conversations with nested replies.
+### 🗣️ Comment and Reply
 
 | Commenting | Replying |
 | :---: | :---: |
