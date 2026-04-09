@@ -23,33 +23,32 @@ A modern, high-performance blog platform built with **.NET 10**, **React 19**, a
 
 ### 🛡️ Register & Login
 
-| Registration | Login |
-| :---: | :---: |
-| ![Register Success](assets/demos/register-success-demo.gif) | ![Login Success](assets/demos/login-success-demo.gif) |
-| *Smooth registration flow* | *Instant JWT-powered login* |
+#### Core Flow
+| Registration Success | Login Success | Logout |
+| :---: | :---: | :---: |
+| ![Register Success](assets/demos/register-success-demo.gif) | ![Login Success](assets/demos/login-success-demo.gif) | ![Logout](assets/demos/log-out-demo.gif) |
 
-> [!NOTE]
-> **Validation Matters**: The system handles duplicate emails and field errors gracefully.
-> - [Register Field Error](assets/demos/register-field-error-demo.gif)
-> - [Account Exists](assets/demos/register-user-exist-demo.gif)
+#### Validation & Errors
+| Field Errors | Confirm Password Error | User Already Exists |
+| :---: | :---: | :---: |
+| ![Field Error](assets/demos/register-field-error-demo.gif) | ![Confirm Password](assets/demos/register-confirm-password-error-demo.gif) | ![User Exists](assets/demos/register-user-exist-demo.gif) |
 
 ---
 
 ### ✍️ Post
 
-| Creating a Post | Editing & Deleting |
-| :---: | :---: |
-| ![Post Creation](assets/demos/post-demo.gif) | ![Post Edit](assets/demos/edit-post-demo.gif) |
-| *Real-time post publishing* | *Full control over your content* |
+| Creating a Post | Editing a Post | Deleting a Post |
+| :---: | :---: | :---: |
+| ![Post Creation](assets/demos/post-demo.gif) | ![Post Edit](assets/demos/edit-post-demo.gif) | ![Post Delete](assets/demos/delete-post-demo.gif) |
 
 ---
 
 ### 🗣️ Comment and Reply
 
-| Commenting | Replying |
-| :---: | :---: |
-| ![Commenting](assets/demos/user-comment-demo.gif) | ![Replying](assets/demos/reply-comment-demo.gif) |
-| *Engage with authors* | *Threaded discussions* |
+| Commenting | Replying | Editing Reply | Deleting Comment |
+| :---: | :---: | :---: | :---: |
+| ![Commenting](assets/demos/user-comment-demo.gif) | ![Replying](assets/demos/reply-comment-demo.gif) | ![Edit Reply](assets/demos/edit-reply-demo.gif) | ![Delete Comment](assets/demos/delete-comment-demo.gif) |
+
 
 ---
 
