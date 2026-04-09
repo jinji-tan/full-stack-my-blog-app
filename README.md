@@ -60,6 +60,8 @@ A modern, high-performance blog platform built with **.NET 10**, **React 19**, a
 - **Database**: SQL Server
 - **Security**: JWT Bearer Authentication / BCrypt Password Hashing
 
+![API Documentation](assets/demos/api.png)
+
 ### Frontend
 - **Framework**: React 19 (Vite)
 - **State Management**: React Hooks
