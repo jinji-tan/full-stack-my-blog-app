@@ -21,7 +21,7 @@ A modern, high-performance blog platform built with **.NET 10**, **React 19**, a
 
 ## 🎬 Visual Demos
 
-### 🛡️ User & Auth
+### 🛡️ Register & Login
 
 | Registration | Login |
 | :---: | :---: |
