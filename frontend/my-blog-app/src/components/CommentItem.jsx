@@ -50,7 +50,7 @@ const CommentItem = ({ comment, postId, postAuthorId, onDelete, onRefresh, depth
             {/* Header: Avatar + Bubble */}
             <div className="flex gap-2 group">
                 {/* User Initial */}
-                <div className={`${avatarSize} rounded-full bg-blue-50 flex-shrink-0 flex items-center justify-center text-blue-600 font-bold text-[11px] border border-blue-100 shadow-sm ring-1 ring-white overflow-hidden mt-0.5`}>
+                <div className={`${avatarSize} rounded-full bg-blue-50 shrink-0 flex items-center justify-center text-blue-600 font-bold text-[11px] border border-blue-100 shadow-sm ring-1 ring-white overflow-hidden mt-0.5`}>
                     {comment.authorName.charAt(0)}
                 </div>
 

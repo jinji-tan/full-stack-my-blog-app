@@ -25,7 +25,7 @@ const AddComment = ({ postId, parentId = null, parentAuthorName = null, onCommen
         <form onSubmit={handleSubmit} className={`relative ${parentId ? "mb-2" : "mb-6"}`}>
             <div className="flex gap-2.5 items-start pt-1">
        
-                <div className={`w-8 h-8 rounded-full bg-blue-50 flex-shrink-0 flex items-center justify-center text-blue-400 border border-blue-100 shadow-sm ring-1 ring-white`}>
+                <div className={`w-8 h-8 rounded-full bg-blue-50 shrink-0 flex items-center justify-center text-blue-400 border border-blue-100 shadow-sm ring-1 ring-white`}>
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                     </svg>
