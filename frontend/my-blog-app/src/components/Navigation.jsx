@@ -1,18 +1,60 @@
+import { useState, useEffect } from "react";
+
 const Navigation = ({ setPage }) => {
+    const FirstName = localStorage.getItem("firstName") || "User";
+    const LastName = localStorage.getItem("lastName") || "";
+    const fullText = `Welcome, ${FirstName} ${LastName}`;
+    
+    const [displayText, setDisplayText] = useState("");
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        let timer;
+        const typeSpeed = isDeleting ? 50 : 100;
+
+        if (!isDeleting && index < fullText.length) {
+            // Typing
+            timer = setTimeout(() => {
+                setDisplayText(prev => prev + fullText[index]);
+                setIndex(prev => prev + 1);
+            }, typeSpeed);
+        } else if (isDeleting && index > 0) {
+            // Deleting
+            timer = setTimeout(() => {
+                setDisplayText(prev => prev.slice(0, -1));
+                setIndex(prev => prev - 1);
+            }, typeSpeed);
+        } else if (index === fullText.length && !isDeleting) {
+            // Pause at the end
+            timer = setTimeout(() => setIsDeleting(true), 2000);
+        } else if (index === 0 && isDeleting) {
+            // Restart loop
+            setIsDeleting(false);
+        }
+
+        return () => clearTimeout(timer);
+    }, [index, isDeleting, fullText]);
 
     const handleLogout = async () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("firstName");
+        localStorage.removeItem("lastName");
 
         if (setPage) setPage("login");
         else window.location.reload();
     }
 
     return (
-        <div className="min-h-25 relative flex flex-row items-center p-6 bg-linear-to-br from-slate-50 to-gray-100 rounded-xl shadow-xl">
+        <div className="min-h-25 relative flex flex-row items-center p-6 bg-linear-to-br from-white to-slate-50 rounded-xl shadow-xl border border-slate-100/50">
 
             {/* TITLE */}
-            <div className="text-3xl font-black tracking-tight bg-linear-to-br from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Welcome
+            <div className="text-3xl font-black tracking-tight flex items-center">
+                <span className="bg-linear-to-br from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    {displayText}
+                </span>
+                <span className="w-1 h-8 ml-1 bg-linear-to-br from-blue-600 via-purple-600 to-pink-600 rounded-full animate-pulse"></span>
             </div>
 
             {/* Nav */}
