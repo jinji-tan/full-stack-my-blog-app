@@ -82,7 +82,7 @@ const CommentItem = ({ comment, postId, postAuthorId, onDelete, onRefresh, depth
                                     <textarea
                                         value={editedContent}
                                         onChange={(e) => setEditedContent(e.target.value)}
-                                        className="w-full px-3 py-2 text-[14px] text-slate-700 bg-slate-50 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:bg-white transition-all min-h-[80px]"
+                                        className="w-full px-3 py-2 text-[14px] text-slate-700 bg-slate-50 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:bg-white transition-all min-h-20"
                                         autoFocus
                                     />
                                     <div className="flex justify-end gap-2 mt-2">
