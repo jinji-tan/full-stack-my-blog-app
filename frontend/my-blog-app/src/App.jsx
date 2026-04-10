@@ -5,20 +5,14 @@ import Home from "./pages/Home"
 
 const App = () => {
   const [page, setPage] = useState(() => {
-    const savedPage = localStorage.getItem("page");
-    const savedToken = localStorage.getItem("token");
-
-    if (savedToken) return ("home")
-
-    return savedPage || "login";
+    return localStorage.getItem("token") ? "home" : "login";
   })
 
   useEffect(() => {
-    localStorage.setItem("page", page)
     const token = localStorage.getItem("token")
-
-    if (page === "home" && !token)
+    if (page === "home" && !token) {
       setPage("login")
+    }
   }, [page])
 
   switch (page) {
