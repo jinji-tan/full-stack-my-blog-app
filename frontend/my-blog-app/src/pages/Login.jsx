@@ -5,6 +5,7 @@ import LoadingButton from "../components/LoadingButton"
 const Login = ({ setPage }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
 
@@ -30,6 +31,9 @@ const Login = ({ setPage }) => {
             }
 
             localStorage.setItem("token", data.token)
+            localStorage.setItem("userId", data.id)
+            localStorage.setItem("firstName", data.firstName)
+            localStorage.setItem("lastName", data.lastName)
             setPage("home")
 
         } catch (err) {

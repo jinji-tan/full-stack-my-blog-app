@@ -53,6 +53,10 @@ const Register = ({ setPage }) => {
             }
 
             localStorage.setItem("token", data.token)
+            localStorage.setItem("userId", data.id)
+            localStorage.setItem("firstName", data.firstName)
+            localStorage.setItem("lastName", data.lastName)
+
             alert(data.message)
             setPage("home")
 
@@ -166,7 +170,7 @@ const Register = ({ setPage }) => {
                     </span>
                 </label>
 
-                {/* Loading... */}
+                {/* Submit /Loading... */}
                 <LoadingButton loading={loading} type="submit">
                     Submit
                 </LoadingButton>
